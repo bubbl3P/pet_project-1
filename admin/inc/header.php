@@ -32,6 +32,7 @@
     <script src="js/jquery-ui/jquery.ui.mouse.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui/jquery.ui.sortable.min.js" type="text/javascript"></script>
     <script src="js/table/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <!-- END: load jquery -->
     <script type="text/javascript" src="js/table/table.js"></script>
     <script src="js/setup.js" type="text/javascript"></script>
@@ -56,7 +57,7 @@
 				</div>
                 <div class="floatright">
                     <div class="floatleft">
-                        <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                        <img src="<?php echo Session::get('image') ?>" alt="Profile Pic" /></div>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
                             <li>Hello, <?php echo Session::get('adminName')?></li>
@@ -83,6 +84,7 @@
 				<li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
 				<li class="ic-grid-tables"><a href="inbox.php"><span>Inbox</span></a></li>
                 <li class="ic-charts"><a href=""><span>Visit Website</span></a></li>
+                <li class="ic-notifications"><a href="feedback.php"><span>FeedBack</span></a></li>
             </ul>
         </div>
         <div class="clear">

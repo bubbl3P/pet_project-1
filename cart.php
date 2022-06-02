@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['submit'])) {
     $cartID = $_POST['cartID'];
     $quantity = $_POST['quantity'];
     $update_quantity_cart = $ct->update_quantity_cart($quantity, $cartID);
-	if($quantity<=0){
+	if($quantity<=1){
 		$delcart = $ct->del_product_cart($cartID);
 	}
 }
@@ -47,7 +47,7 @@ if(!isset($_GET['id'])){
 								<th width="20%">Total Price</th>
 								<th width="10%">Action</th>
 							</tr>
-						<?php 
+						<?php
 						$get_product_cart = $ct->get_product_cart();
                         if ($get_product_cart) {
 							$subtotal = 0;
@@ -66,10 +66,11 @@ if(!isset($_GET['id'])){
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
-								<td><?php 
+								<td><?php
 								$total = $result['price'] * $result['quantity'];
 								echo $fm->format_currency($total)." "."VNĐ";
 								?></td>
+
 								<td><a onclick="return confirm('Are you sure you want to delete?');"href="?cartid=<?php echo $result['cartID'] ?>">Xóa</onclick=></td>
 							</tr>
 						<?php
@@ -100,10 +101,10 @@ if(!isset($_GET['id'])){
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td><?php
+								<td name = "gtotal"><?php
 								$vat = $subtotal * 0.1;
 								$gtotal = $subtotal + $vat;
-								echo $fm->format_currency($total)." "."VNĐ";	
+								echo $fm->format_currency($gtotal)." "."VNĐ";
 								 ?> </td>
 							</tr>
 					   </table>

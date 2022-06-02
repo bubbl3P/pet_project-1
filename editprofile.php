@@ -19,6 +19,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])){
         
         $UpdateCustomers = $cs->update_customers($_POST,$id);
+        header('Location:offlinepayment.php');
     }
 
  ?>
@@ -51,11 +52,17 @@
 
             ?>
         <tr>
-            <td>Name</td>
+            <td>Firstname</td>
             <td>:</td>
-            <td><input type="text" name="name" value="<?php echo $result['name'] ?>"></td>
+            <td><input type="text" name="firstname" value="<?php echo $result['firstname'] ?>"></td>
             
         </tr>
+                        <tr>
+                            <td>Surname</td>
+                            <td>:</td>
+                            <td><input type="text" name="surname" value="<?php echo $result['surname'] ?>"></td>
+
+                        </tr>
         
         <tr>
             <td>Phone</td>

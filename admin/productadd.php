@@ -118,8 +118,19 @@
                         </select>
                     </td>
                 </tr>
-
-				<tr>
+                <tr>
+                    <td>
+                        <label>Status Slide</label>
+                    </td>
+                    <td>
+                        <select id="selectSlide" name="statusSlide">
+                                <option>Lựa chọn:</option>
+                                <option value="0">Show Left</option>
+                                <option value="1">Hide</option>
+                                <option value="2">Show Right</option>
+                        </select>
+                    </td>
+				</tr>
                     <td></td>
                     <td>
                         <input type="submit" name="submit" Value="Lưu" />

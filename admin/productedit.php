@@ -82,7 +82,6 @@
                             if ($brandlist) {
                                 while ($result = $brandlist->fetch_assoc()) {
                         ?>
-
                             <option
                             <?php
                             if($result['brandID']==$result_product['brandID']){ echo 'selected'; }
@@ -146,6 +145,33 @@
                             ?>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Status Slide</label>
+                    </td>
+                    <td>
+                        <select id="selectSlide" name="statusSlide">
+                            <option>Lựa chọn:</option>
+                            <?php
+                                if($result_product['statusSlide'] != 0){
+                                    ?>
+                                    <option selected value="0">Show Left</option>
+                                    <option value="1">Hide</option>
+                                    <option value="2">Show Right</option>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <option value="0">Show Left</option>
+                                    <option selected value="1">Hide</option>
+                                    <option value="2">Show Right</option>
+
+                                    <?php
+                                }
+                            ?>
+                        </select>
+                    </td>
+
                 </tr>
 
 				<tr>

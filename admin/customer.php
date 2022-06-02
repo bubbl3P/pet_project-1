@@ -34,10 +34,17 @@ require_once ($filepath.'/../helpers/format.php');
                  <form action="" method="post">
                     <table class="form">					
                         <tr>
-                            <td>Name</td>
+                            <td>Firstname</td>
                             <td>:</td>
                             <td>
-                                <input type="text" readonly="readonly" value="<?php echo $result['name']?>"  name="name"  class="medium" />
+                                <input type="text" readonly="readonly" value="<?php echo $result['firstname']?>"  name="name"  class="medium" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Surname</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" readonly="readonly" value="<?php echo $result['surname']?>"  name="name"  class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -54,13 +61,7 @@ require_once ($filepath.'/../helpers/format.php');
                                 <input type="text" readonly="readonly" value="<?php echo $result['city']?>"  name="name"  class="medium" />
                             </td>
                         </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>:</td>
-                            <td>
-                                <input type="text" readonly="readonly" value="<?php echo $result['country']?>"  name="name"  class="medium" />
-                            </td>
-                        </tr>
+
                         <tr>
                             <td>Address</td>
                             <td>:</td>
@@ -80,6 +81,13 @@ require_once ($filepath.'/../helpers/format.php');
                             <td>:</td>
                             <td>
                                 <input type="text" readonly="readonly" value="<?php echo $result['email']?>"  name="name"  class="medium" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Avatar</td>
+                            <td>:</td>
+                            <td>
+                                <img readonly="readonly" src="<?php echo $result['image']?>"  name="name"  class="medium" />
                             </td>
                         </tr>
                        

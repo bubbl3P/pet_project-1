@@ -77,6 +77,7 @@
             $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
             $price = mysqli_real_escape_string($this->db->link, $data['price']);
             $type = mysqli_real_escape_string($this->db->link, $data['type']);
+            $statusSlide = mysqli_real_escape_string($this->db->link, $data['statusSlide']);
             // kiemtra hinh anh va lay hinh anh cho vao folder upload
             $permited  = array('jpg','jpeg','png','gif');
             $file_name = $_FILES['image']['name'];
@@ -90,13 +91,13 @@
             
             
         
-            if ($productName=="" || $brand=="" || $category=="" || $product_desc=="" || $price=="" || $type=="") {
+            if ($productName=="" || $brand=="" || $category=="" || $product_desc=="" || $price=="" || $type=="" || $statusSlide=="") {
                 $alert = "<span class='error'>Field must be not empty!!</span>";
                 return $alert;
             } else {
                 if (!empty($file_name)) {
                     // neu nguoi dung chon anh
-                    if ($file_size > 204800) {
+                    if ($file_size > 2048000) {
                         $alert = "<span class='success'>Image size should be less than 2MB!</span>";
                         return $alert;
                     } elseif (in_array($file_ext, $permited) === false) {
@@ -110,6 +111,7 @@
                     brandID='$brand',
                     catID='$category',
                     type='$type',
+                    statusSlide='$statusSlide',
                     price='$price',
                     image='$unique_image',
                     product_desc='$product_desc'
@@ -121,6 +123,7 @@
                     brandID='$brand',
                     catID='$category',
                     type='$type',
+                    statusSlide='$statusSlide',
                     price='$price',
                     product_desc='$product_desc'
                     WHERE productID='$id' ";
@@ -174,7 +177,15 @@
             return $result;
         }
 
-        
+
+
+        public function getproduct_all()
+        {
+            $query = "SELECT * FROM tbl_product ";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
         public function getproduct_new()
         {
             $query = "SELECT * FROM tbl_product order by productID desc LIMIT 4";
@@ -192,27 +203,44 @@
             $result = $this->db->select($query);
             return $result;
         }
+        public function get_slidedetail($id)
+        {
+            $query = "SELECT * FROM tbl_product WHERE productID = '$id'";
 
-        public function getLastestDell(){
-            $query = "SELECT * FROM tbl_product WHERE brandID ='7' order by productID desc LIMIT 1";
             $result = $this->db->select($query);
             return $result;
         }
-        public function getLastestOppo(){
-            $query = "SELECT * FROM tbl_product WHERE brandID ='3' order by productID desc LIMIT 1";
+        public function slide_left(){
+            $query = "SELECT * FROM tbl_product WHERE type = '0' AND statusSlide = '0' ";
             $result = $this->db->select($query);
             return $result;
         }
-        public function getLastestHuawei(){
-            $query = "SELECT * FROM tbl_product WHERE brandID ='9' order by productID desc LIMIT 1";
+        public function slide_right(){
+            $query = "SELECT * FROM tbl_product WHERE type = '0' AND statusSlide = '2' ";
             $result = $this->db->select($query);
             return $result;
         }
-        public function getLastestSamsung(){
-            $query = "SELECT * FROM tbl_product WHERE brandID ='8' order by productID desc LIMIT 1";
-            $result = $this->db->select($query);
-            return $result;
-        }
+
+//        public function getLastestNhan(){
+//            $query = "SELECT * FROM tbl_product WHERE brandID ='13' order by productID desc LIMIT 1";
+//            $result = $this->db->select($query);
+//            return $result;
+//        }
+//        public function getLastestDaychuyen(){
+//            $query = "SELECT * FROM tbl_product WHERE brandID ='10' order by productID desc LIMIT 1";
+//            $result = $this->db->select($query);
+//            return $result;
+//        }
+//        public function getLastestLactay(){
+//            $query = "SELECT * FROM tbl_product WHERE brandID ='14' order by productID desc LIMIT 1";
+//            $result = $this->db->select($query);
+//            return $result;
+//        }
+//        public function getLastestBongtai(){
+//            $query = "SELECT * FROM tbl_product WHERE brandID ='12' order by productID desc LIMIT 1";
+//            $result = $this->db->select($query);
+//            return $result;
+//        }
 
 
         public function get_compare($customer_id){
@@ -295,6 +323,15 @@
                 }
             }
         }
+//        public function getedit1($brandID){
+//            $query = "UPDATE tbl_product SET brandID = '$brandID' ";
+//            $result = $this->db->select($query);
+//            return $result;
+//        }
+
+
+
+
 
     }
 ?>

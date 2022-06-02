@@ -145,11 +145,18 @@
 
             ?>
         <tr>
-            <td>Name</td>
+            <td>Firstname</td>
             <td>:</td>
-            <td><?php echo $result['name']
+            <td><?php echo $result['firstname']
             ?></td>
         </tr>
+         <tr>
+             <td>Surname</td>
+             <td>:</td>
+             <td><?php echo $result['surname']
+             ?></td>
+         </tr>
+
         <tr>
             <td>City</td>
             <td>:</td>
@@ -194,7 +201,7 @@
  			</div>
             
  		</div>
-         <center><a href="?orderid=order" class="a_order">Order Now</a></center><br>
+         <center><a style="text-decoration: none;" href="?orderid=order" class="a_order">Order Now</a></center><br>
  	</div>
  </form>
  

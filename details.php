@@ -1,4 +1,5 @@
 
+
 <?php
     include 'inc/header.php';
     // 	include 'inc/slider.php';
@@ -25,6 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['submit'])){
 
 ?>
 
+
  <div class="main">
     <div class="content">
     	<div class="section group">
@@ -34,9 +36,10 @@ if ($get_product_details) {
     while ($result_details = $get_product_details->fetch_assoc()) {
         ?>
 		<div class="cont-desc span_1_of_2">				
-					<div class="grid images_3_of_2">
-						<img src="admin/uploads/<?php echo $result_details ['image'] ?>" alt="" />
+					<div id="zoomArea" class="grid images_3_of_2">
+						<img id="NZoomImg" data-NZoomscale="2"  src="admin/uploads/<?php echo $result_details ['image'] ?>" alt="" />
 					</div>
+
 				<div class="desc span_3_of_2">
 					<h2><?php echo $result_details ['productName'] ?></h2>
 					<p><?php echo $fm->textShorten($result_details ['product_desc'] ,150)?></p>					
@@ -114,7 +117,7 @@ if ($get_product_details) {
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<p><?php echo $fm->textShorten($result_details ['product_desc'] ,500)?></p>		
+			<p style="font-size: larger"><?php echo $fm->textShorten($result_details ['product_desc'] )?></p>
 	    </div>
 				
 	</div>
@@ -136,10 +139,12 @@ if ($get_product_details) {
                         }
 					  ?>
     				</ul>
-    	
+                    <br>
  				</div>
+
  		</div>
  	</div>
+
 <?php
     include 'inc/footer.php';
     

@@ -6,6 +6,7 @@
 
 
 <?php
+ob_start();
     class cart
     {
         private $db;
@@ -46,6 +47,7 @@
                 } else {
                     header('Location:404.php');
                 }
+
             // }
         }
         public function get_product_cart(){
@@ -129,6 +131,7 @@
                 $query_order = "INSERT INTO tbl_order(productID,productName,quantity,price,image,customer_id) 
                 VALUES ('$productid','$productName','$quantity','$price','$image','$customer_id')";
                 $insert_order = $this->db->insert($query_order);
+                return $insert_order;
                 
                }
            }
@@ -204,4 +207,3 @@
         
     }
 ?>
-       

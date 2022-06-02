@@ -26,7 +26,7 @@
             text-align: center;
             font: size 20px;
             font-weight: bold;
-            text-decoration: underline;
+
         }
 
         .wrapper_method{
@@ -42,6 +42,7 @@
             padding: 10px;
             background:red;
             color: #fff;
+            text-decoration: none;
         }
         .wrapper_method h3{
             margin-bottom: 20px;
@@ -60,7 +61,7 @@
                 <h3 class="payment">Choose your method payment</h3>
                 <a   href="offlinepayment.php">Offline Payment</a>
                 <a   href="onlinepayment.php">Online Payment</a><br><br><hr>
-                <a style="background:grey" href="cart.php"> << Previous </a>
+                <a style="background:grey; text-decoration:none" href="cart.php"> << Trở Về </a>
              </div>
  		    </div>
  		</div>

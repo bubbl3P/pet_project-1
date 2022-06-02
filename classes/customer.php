@@ -17,16 +17,17 @@
             $this->fm = new Format();
         }
         public function insert_customers($data){
-            $name = mysqli_real_escape_string($this->db->link, $data['name']);
+            $firstname = mysqli_real_escape_string($this->db->link, $data['firstname']);
+            $surname = mysqli_real_escape_string($this->db->link, $data['surname']);
             $city = mysqli_real_escape_string($this->db->link, $data['city']);
             $zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
             $email = mysqli_real_escape_string($this->db->link, $data['email']);
             $address = mysqli_real_escape_string($this->db->link, $data['address']);
-            $country = mysqli_real_escape_string($this->db->link, $data['country']);
             $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+            $image = mysqli_real_escape_string($this->db->link, $data['image']);
             $password = mysqli_real_escape_string($this->db->link, md5($data['password']));
 
-            if ($name=="" || $city=="" || $zipcode=="" || $email=="" || $address=="" || $country=="" || $phone =="" || $password =="") {
+            if ($firstname=="" ||$surname =="" || $city=="" || $zipcode=="" || $email=="" || $address=="" || $phone =="" || $password =="" || $image =="") {
                 // thong bao user and password
                 $alert = "<span class='error'>Field must be not empty!!</span>";
                 return $alert;
@@ -37,8 +38,8 @@
                     $alert = "<span class='error'>Please check your email, it must be already existed</span>";
                     return $alert;
                 }else{
-                    $query = "INSERT INTO tbl_customer(name,city,zipcode,email,address,country,phone,password) 
-                    VALUES ('$name','$city','$zipcode','$email','$address','$country','$phone','$password')";
+                    $query = "INSERT INTO tbl_customer(firstname,surname,city,zipcode,email,address,phone,password, image) 
+                    VALUES ('$firstname','$surname','$city','$zipcode','$email','$address','$phone','$password','$image')";
                     $result = $this->db->insert($query);
                     if($result) {
                          $alert = "<span class='success'>Customer Created Successful</span>";
@@ -65,8 +66,9 @@
                     $value = $result_check->fetch_assoc();
                     Session::set('customer_login', true);
                     Session::set('customer_id', $value['id']);
-                    Session::set('customer_login', $value['name']);
-                    header('Location:order.php');
+                    Session::set('customer_login', $value['email']);
+                    Session::set('customer_login', $value['image']);
+                    header('Location:index.php');
 
                 }else{
                     $alert = "<span class='error'>Email or Password doesn't match!!</span>";
@@ -83,20 +85,21 @@
         }
 
         public function update_customers($data ,$id){
-            $name = mysqli_real_escape_string($this->db->link, $data['name']);
+            $firstname = mysqli_real_escape_string($this->db->link, $data['firstname']);
+            $surname = mysqli_real_escape_string($this->db->link, $data['surname']);
             $zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
             $email = mysqli_real_escape_string($this->db->link, $data['email']);
             $address = mysqli_real_escape_string($this->db->link, $data['address']);
             $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
            
 
-            if ($name=="" || $zipcode=="" || $email=="" || $address=="" || $phone =="" ) {
+            if ($firstname=="" || $zipcode=="" || $email=="" || $address=="" || $phone =="" || $surname=="") {
                 // thong bao user and password
                 $alert = "<span class='error'>Field must be not empty!!</span>";
                 return $alert;
             }else{
 
-                    $query = "UPDATE tbl_customer SET name='$name',zipcode='$zipcode',email='$email',address='$address',phone='$phone'
+                    $query = "UPDATE tbl_customer SET firstname='$firstname',surname='$surname',zipcode='$zipcode',email='$email',address='$address',phone='$phone'
                     WHERE id='$id'";
                     $result = $this->db->insert($query);
                     if($result) {

@@ -41,6 +41,11 @@
                         <li><a href="sliderlist.php">Slider List</a> </li>
                     </ul>
                 </li>
+                <li><a class="menuitem">Danh Mục Brand Nổi Bật</a>
+                    <ul class="submenu">
+                        <li><a href="brandnoibat.php">Edit Brand Nổi Bật List</a> </li>
+                    </ul>
+                </li>
                
                
             </ul>

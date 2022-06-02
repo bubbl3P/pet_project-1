@@ -34,6 +34,7 @@
 					<th>Brand</th>
 					<th>Description</th>
 					<th>Type</th>
+                    <th>StatusSlide</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -64,6 +65,7 @@
 							echo 'Non-feathered';
 						}
 						?></td>
+                    <td><?php echo $result['statusSlide']?></td>
 					
 					
 					<td><a href="productedit.php?productid=<?php echo $result['productID']?>">Edit</a> || 
